@@ -47,7 +47,7 @@ app.get("/image", async (req, res) => {
     );
   }
 
-  console.log("url", html);
+  // console.log("url", html, __dirname);
 
   const browser = await puppeteer.launch({
     args: [
@@ -73,30 +73,33 @@ app.get("/image", async (req, res) => {
 
     // Take a screenshot of the page
     const screenshot = await page.screenshot({ type: "png" });
-    const outputImagePath = "compressed_image.jpg";
+    const outputImagePath = "compressed_image.jpeg";
     // Compression options
     const compressionOptions = {
-      quality: 80, // Adjust the quality value (0-100) to change compression level
-      chromaSubsampling: "4:4:4" // Adjust chroma subsampling for JPEG format (optional)
+      quality: 60 // Adjust the quality value (0-100) to change compression level
+      // chromaSubsampling: "4:4:4" // Adjust chroma subsampling for JPEG format (optional)
     };
 
     // Compress the image
     sharp(screenshot)
-      .jpeg(compressionOptions)
+      .toFormat("jpeg", { mozjpeg: true, ...compressionOptions })
       .toFile(outputImagePath)
-      .then(() => {
-        console.log("Image compressed successfully!");
+      .then(value => {
+        console.log("Image compressed successfully!", value);
+        // Set the response headers
+        res.setHeader("Content-Type", "image/jpeg");
+        res.setHeader(
+          "Content-Disposition",
+          "attachment; filename=compressed_image.jpeg"
+        );
+
+        // Send the image data
+        res.sendFile(__dirname + "/" + outputImagePath);
       })
       .catch(error => {
         console.error("Error compressing image:", error);
+        res.status(500).send("Error in optimizing image");
       });
-
-    // Set the response headers
-    res.setHeader("Content-Type", "image/png");
-    res.setHeader("Content-Disposition", "attachment; filename=screenshot.jpg");
-
-    // Send the image data
-    res.send(outputImagePath);
 
     // Close the browser
     await browser.close();
