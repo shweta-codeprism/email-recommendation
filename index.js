@@ -1,6 +1,7 @@
 const express = require("express");
 const puppeteer = require("puppeteer");
 const sharp = require("sharp");
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3030;
@@ -48,8 +49,20 @@ app.get("/image", async (req, res) => {
 
   console.log("url", html);
 
+  const browser = await puppeteer.launch({
+    args: [
+      "--disable-setuid-sandbox",
+      "--no-sandbox",
+      "--single-process",
+      "--no-zygote"
+    ],
+    executablePath:
+      process.env.NODE_ENV === "production"
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath()
+  });
+
   try {
-    const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
     // Set the viewport size
