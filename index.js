@@ -38,12 +38,12 @@ app.get("/image", async (req, res) => {
   if (slot == 1) {
     html = html.replace(
       "replace-image",
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+      "https://drive.google.com/uc?export=view&id=1EzigfGB3D9eie2HcxiZ0Dyxsq9PJWSxf"
     );
   } else {
     html = html.replace(
       "replace-image",
-      "https://1.bp.blogspot.com/-kK7Fxm7U9o0/YN0bSIwSLvI/AAAAAAAACFk/aF4EI7XU_ashruTzTIpifBfNzb4thUivACLcBGAsYHQ/s16000/222.jpg"
+      "https://drive.google.com/uc?export=view&id=1sgahTw1RilofHH-59AiwMi8-wuCvOOwz"
     );
   }
 
@@ -66,40 +66,48 @@ app.get("/image", async (req, res) => {
     const page = await browser.newPage();
 
     // Set the viewport size
-    await page.setViewport({ width: 1920, height: 1080 });
+    await page.setViewport({ width: 640, height: 480, deviceScaleFactor: 1 });
 
     // Navigate to the HTML content
     await page.setContent(html);
 
     // Take a screenshot of the page
-    const screenshot = await page.screenshot({ type: "png" });
-    const outputImagePath = "compressed_image.jpeg";
+    const screenshot = await page.screenshot({ type: "jpeg" });
+    // const outputImagePath = "compressed_image.jpeg";
     // Compression options
-    const compressionOptions = {
-      quality: 60 // Adjust the quality value (0-100) to change compression level
-      // chromaSubsampling: "4:4:4" // Adjust chroma subsampling for JPEG format (optional)
-    };
+    // const compressionOptions = {
+    //   quality: 60 // Adjust the quality value (0-100) to change compression level
+    //   // chromaSubsampling: "4:4:4" // Adjust chroma subsampling for JPEG format (optional)
+    // };
 
     // Compress the image
-    sharp(screenshot)
-      .toFormat("jpeg", { mozjpeg: true, ...compressionOptions })
-      .toFile(outputImagePath)
-      .then(value => {
-        console.log("Image compressed successfully!", value);
-        // Set the response headers
-        res.setHeader("Content-Type", "image/jpeg");
-        res.setHeader(
-          "Content-Disposition",
-          "attachment; filename=compressed_image.jpeg"
-        );
+    // sharp(screenshot)
+    //   .toFormat("jpeg", { mozjpeg: true, ...compressionOptions })
+    //   .toFile(outputImagePath)
+    //   .then(value => {
+    //     console.log("Image compressed successfully!", value);
+    //     // Set the response headers
+    //     res.setHeader("Content-Type", "image/jpeg");
+    //     res.setHeader(
+    //       "Content-Disposition",
+    //       "attachment; filename=compressed_image.jpeg"
+    //     );
 
-        // Send the image data
-        res.sendFile(__dirname + "/" + outputImagePath);
-      })
-      .catch(error => {
-        console.error("Error compressing image:", error);
-        res.status(500).send("Error in optimizing image");
-      });
+    //     // Send the image data
+    //     res.sendFile(__dirname + "/" + outputImagePath);
+    //   })
+    //   .catch(error => {
+    //     console.error("Error compressing image:", error);
+    //     res.status(500).send("Error in optimizing image");
+    // });
+
+    res.setHeader("Content-Type", "image/jpeg");
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=product_image.jpeg"
+    );
+
+    res.send(screenshot);
 
     // Close the browser
     await browser.close();
