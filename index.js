@@ -21,7 +21,7 @@ app.get("/url", async (req, res) => {
     res.redirect(
       "https://www.myntra.com/kurtas/herenow/herenow-pure-cotton-floral-print-gotta-patti-kurta/2314429/"
     );
-  } else if (slot == 2) {
+  } else if (slot == 3) {
     res.redirect(
       "https://www.myntra.com/kurtas/anouk/anouk-women-pink-printed-straight-kurta/2322979/buy"
     );
