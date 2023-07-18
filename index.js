@@ -19,7 +19,7 @@ app.get("/url", async (req, res) => {
     );
   } else if (slot == 2) {
     res.redirect(
-      "https://www.myntra.com/kurtas/herenow/herenow-pure-cotton-floral-print-gotta-patti-kurta/2314429/"
+      "https://www.myntra.com/kurtas/herenow/herenow-pure-cotton-floral-print-gotta-patti-kurta/23144290/buy"
     );
   } else if (slot == 3) {
     res.redirect(
@@ -70,7 +70,7 @@ app.get("/image", async (req, res) => {
     );
   }
 
-  // console.log("url", html, __dirname);
+  console.log("url", html);
 
   const browser = await puppeteer.launch({
     args: [
