@@ -9,13 +9,26 @@ const port = process.env.PORT || 3030;
 app.get("/", (req, res) => {
   res.end("It is working");
 });
+
 app.get("/url", async (req, res) => {
   const { slot } = req.query;
 
   if (slot == 1) {
-    res.redirect("https://constructor.io/");
-  } else {
-    res.redirect("https://docs.constructor.io/");
+    res.redirect(
+      "https://www.myntra.com/kurtas/herenow/herenow-striped-sequined-detail-a-line-kurta/22689590/buy"
+    );
+  } else if (slot == 2) {
+    res.redirect(
+      "https://www.myntra.com/kurtas/herenow/herenow-pure-cotton-floral-print-gotta-patti-kurta/2314429/"
+    );
+  } else if (slot == 2) {
+    res.redirect(
+      "https://www.myntra.com/kurtas/anouk/anouk-women-pink-printed-straight-kurta/2322979/buy"
+    );
+  } else if (slot == 4) {
+    res.redirect(
+      "https://www.myntra.com/kurtas/herenow/herenow-women-off-white--pink-ethnic-motifs-print-pure-cotton-straight-kurta/13166544/buy"
+    );
   }
 });
 
@@ -38,12 +51,22 @@ app.get("/image", async (req, res) => {
   if (slot == 1) {
     html = html.replace(
       "replace-image",
-      "https://drive.google.com/uc?export=view&id=1EzigfGB3D9eie2HcxiZ0Dyxsq9PJWSxf"
+      "https://drive.google.com/uc?export=view&id=1l0oU2aooqhOHYuA4h0eQrtadlzuTlI_p"
     );
-  } else {
+  } else if (slot == 2) {
     html = html.replace(
       "replace-image",
-      "https://drive.google.com/uc?export=view&id=1sgahTw1RilofHH-59AiwMi8-wuCvOOwz"
+      "https://drive.google.com/uc?export=view&id=1JN8tUPY1ta3QRm0y5bhugt4niqS3eBxE"
+    );
+  } else if (slot == 3) {
+    html = html.replace(
+      "replace-image",
+      "https://drive.google.com/uc?export=view&id=1lMyVwAWBrddMhrlY_wbzwv8yfU8Lcs-q"
+    );
+  } else if (slot == 4) {
+    html = html.replace(
+      "replace-image",
+      "https://drive.google.com/uc?export=view&id=1NQKCiEqFH1AUuK7hZeP08J3EuRwIFz12"
     );
   }
 
@@ -66,7 +89,7 @@ app.get("/image", async (req, res) => {
     const page = await browser.newPage();
 
     // Set the viewport size
-    await page.setViewport({ width: 640, height: 480, deviceScaleFactor: 1 });
+    await page.setViewport({ width: 424, height: 732, deviceScaleFactor: 1 });
 
     // Navigate to the HTML content
     await page.setContent(html);
