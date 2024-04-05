@@ -49,11 +49,12 @@
 
 .original-price {
   text-decoration: line-through;
+  white-space: nowrap
 }
 
 .sale-price {
   color: #c0143c;
+  white-space: nowrap
 }
 
 
-https://5arcphsnqh.execute-api.us-east-1.amazonaws.com/Prod/product/url?position=5&num_results=8&ui=0000&pod_id=hp-selling-fast&key=u7PNVQx-prod-en-us&style_id=standard&campaign_id=campaign_1&%24deep_link=true&om_mmc=ret-us_3c1a6dde-d150-4a2d-b333-dbe26d2b89a2_20240213_Constructor_Internal_Test_SephDev-bb-certona-product1&emtc2=3c1a6dde-d150-4a2d-b333-dbe26d2b89a2&emcampaign=20240213_Constructor_Internal_Test_SephDev&emlid=29b12fd784f04e6ca75adbaa32e7132f&emaid&ematg&emcid&utm_medium=Email%20Epsilon&%243p=e_ep&_branch_match_id=1258606675076698912&_branch_referrer=H4sIAAAAAAAAA41Ry07kMBD8mnBzJrEzD5AQWu0IaS8IBOJqdeyeiUVie%2B02r6%2BnkwHOE1ly9aO62pWBKOar1SpjHEKCGmKsR%2BdfVireVLJT8Ro1xguGIbmj8zDqksbrYaZV6k8lb%2FmsIZk4ZP9%2FqPEdTSEUEF1dskDIJNoaJvgMHt5ybcLEhPsULF%2BRr2KIEc%2Bs1G0M2ZELvlL7dSU3vkw6YS4jsdR%2Bx5niGDT8MY7Bamc5HqLIOPLSR3FgOS694Afny%2Fb%2B7vnhXcwqAr0omUuZPkY88TKBt5B4kY2BKYI7%2BlPhN2q5xC%2B3iFHPpnCNUkHOhklPk%2BE4IfFgrUwLG2tR2HbdiA6kFb1SStge5cbKfncJUstGdo1slf4bfOZBhkLS%2Fzxhmm19wkz6kX%2FDHl9F3wuDidgz8W3SvAtOZCSLnqO2tP%2B8hDnniy%2FMcXFCXvatPNjtrjs0HbJN2zXYHkBJ3LZKHpZWWFpPkI4%2F0CzZLwYQlVFfAgAA

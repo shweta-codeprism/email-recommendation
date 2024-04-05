@@ -49,10 +49,12 @@
 
 .original-price {
   display: none;
+  white-space: nowrap
 }
 
 .sale-price {
   display: none;
+  white-space: nowrap
 }
 
 
